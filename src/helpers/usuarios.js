@@ -1,74 +1,74 @@
 // const url = "http://localhost:8080";
-const url = "https://restserver-pm.herokuapp.com";
+const url = "https://coffee-api-rest.herokuapp.com/api/usuarios";
 
 export const getUsuarios = async (desde) => {
-  const resp = await fetch(`${url}/api/usuarios?desde=${desde}`, {
-    method: "GET",
+	const resp = await fetch(`${url}?desde=${desde}`, {
+		method: "GET",
 
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  });
-  const datos = await resp.json();
+		headers: {
+			"Content-type": "application/json; charset=UTF-8",
+		},
+	});
+	const datos = await resp.json();
 
-  return datos;
+	return datos;
 };
 
 //get con el id
 export const getUsuarioId = async (id) => {
-  const resp = await fetch(`${url}/api/usuarios/${id}`, {
-    method: "GET",
+	const resp = await fetch(`${url}/${id}`, {
+		method: "GET",
 
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  });
-  const datos = await resp.json();
+		headers: {
+			"Content-type": "application/json; charset=UTF-8",
+		},
+	});
+	const datos = await resp.json();
 
-  return datos;
+	return datos;
 };
 
 //post de usuario
 export const postUsuario = async (data) => {
-  const resp = await fetch(`${url}/api/usuarios`, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      "x-token": JSON.parse(localStorage.getItem("auth")).token,
-    },
-  });
-  const datos = await resp.json();
+	const resp = await fetch(url, {
+		method: "POST",
+		body: JSON.stringify(data),
+		headers: {
+			"Content-type": "application/json; charset=UTF-8",
+			"x-token": JSON.parse(localStorage.getItem("auth")).token,
+		},
+	});
+	const datos = await resp.json();
 
-  return datos;
+	return datos;
 };
 
 //put de usuario- actualizar
 export const putUsuario = async (id, data) => {
-  const resp = await fetch(`${url}/api/usuarios/${id}`, {
-    method: "PUT",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      "x-token": JSON.parse(localStorage.getItem("auth")).token,
-    },
-  });
-  const datos = await resp.json();
+	const resp = await fetch(`${url}/${id}`, {
+		method: "PUT",
+		body: JSON.stringify(data),
+		headers: {
+			"Content-type": "application/json; charset=UTF-8",
+			"x-token": JSON.parse(localStorage.getItem("auth")).token,
+		},
+	});
+	const datos = await resp.json();
 
-  return datos;
+	return datos;
 };
 
 //delete de usuario
 export const deleteUsuario = async (id) => {
-  const resp = await fetch(`${url}/api/usuarios/${id}`, {
-    method: "DELETE",
+	const resp = await fetch(`${url}/${id}`, {
+		method: "DELETE",
 
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      "x-token": JSON.parse(localStorage.getItem("auth")).token,
-    },
-  });
-  const datos = await resp.json();
+		headers: {
+			"Content-type": "application/json; charset=UTF-8",
+			"x-token": JSON.parse(localStorage.getItem("auth")).token,
+		},
+	});
+	const datos = await resp.json();
 
-  return datos;
+	return datos;
 };
